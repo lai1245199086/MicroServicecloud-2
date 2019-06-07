@@ -1,0 +1,26 @@
+server: 
+  port: 3342
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          search-paths: cc # 配置文件所属目录，配置文件不能放在仓库的根目录
+          uri: https://github.com/llb1206/respo.git #GitHub上面的git仓库名
+          username: llb1206 # 你的用户名
+          password: 1206c3011 # 你的密码
+      label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: llb
+    password: 1234  
+
+
+eureka:
+ client:
+   serviceUrl:
+    defaultZone: http://eureka7001.com:7004/eureka/

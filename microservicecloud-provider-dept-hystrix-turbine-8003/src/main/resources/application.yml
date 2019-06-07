@@ -1,0 +1,55 @@
+server:
+  port: 8003
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml  #mybatis所在路径
+  type-aliases-package: com.llb.springcloud.bean #别瞎几把复制  出错不好找原因
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml #mapper映射文件
+    
+spring:
+   application:
+    name: micro-turbine
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB03?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 120611
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+      
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: turbine-hystrix   #自定义服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+      
+info:
+  app.name: llb-microservicecloud
+  company.name: www.llb.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"   #boot2.0以后版本需要加上这个配置文件才能打开仪表盘
+      
+turbine:
+  app-config: microservicecloud-dept,microservicecloud-dept02
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+ 
+

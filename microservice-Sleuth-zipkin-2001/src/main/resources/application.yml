@@ -1,0 +1,32 @@
+server:
+  port: 2001
+
+spring:
+  application:
+        name: zipkin-server-mysql
+  datasource:
+        continueOnError: true
+        initialize-mode: false
+        url: jdbc:mysql://127.0.0.1:3306/oauth2?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: 120611
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+        
+
+sleuth:
+ enabled: false        
+zipkin:
+    storage:
+        type: mysql
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

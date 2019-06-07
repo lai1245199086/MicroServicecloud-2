@@ -1,0 +1,11 @@
+server:
+  port: 8301
+spring:   
+  application:
+    name: stream-consumer  
+  rabbitmq:
+        host: rabbitmq-server
+        port: 5672
+        username: llb
+        password: 1234
+              

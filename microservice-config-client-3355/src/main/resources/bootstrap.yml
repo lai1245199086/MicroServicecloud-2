@@ -1,0 +1,16 @@
+
+spring:
+  cloud:
+    config:
+      name: microservicecloud-config-client #需要从github上读取的p配置文件名称，注意没有yml后缀名
+      profile: test   #本次访问的配置项
+      label: master   
+      uri: http://config-3344.com:3342  #本微服务启动后先去找3344号服务，通过SpringCloudConfig获取GitHub的服务地址  远程配置本地
+      
+      #*****************  请注意 这里没有写端口号  这个客户端启动的时候是
+      #在服务端获取yml内容的  根据profile 配置项获取**所以端口跟着变得
+ 
+
+#
+#这个项目的目的就是表明配置文件完全可以存放在远程，包括端口号，全部内容
+#

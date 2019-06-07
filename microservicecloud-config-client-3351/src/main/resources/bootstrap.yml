@@ -1,0 +1,39 @@
+server:
+  port: 3351
+
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      fail-fast: true 
+      discovery:
+        enabled: true
+        service-id: config-server  #找到注册中心中配置中心微服务
+    bus:
+       refresh:
+        enabled: true     #动态刷新配置 ---需要忽略权限拦截
+  profiles:
+    active: dev   #dev属性   {spring application.name-dev}查找文件
+    
+    
+  rabbitmq:     # 现在将集成RabbitMQ作为消息服务总线处理
+    host: rabbitmq-server   # RabbitMQ主机服务地址
+    port: 5672    # RabbitMQ的监听端口
+    username: llb  # 用户名
+    password: 1234 # 密码
+               #配置文件远程动态刷新
+#management:    #暴露刷新接口          postman  http://localhost:3351/refresh 这个只能单个刷新客户端，   实际开发不可用
+ # security:    # http://localhost:3341/actuator/bus-refresh  虽然报错 但是可用用
+  # enabled: false  # http://localhost:3341/bus/refresh 这个好像也可以也报错 但是有延时
+management:
+  endpoints:
+    web:
+      exposure:
+        include:  "*"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7004.com:7004/eureka/

@@ -1,0 +1,13 @@
+server:
+  port: 8301
+spring:   
+  application:
+    name: stream-consumer  
+  rabbitmq:
+        host: rabbitmq-server
+        port: 5672
+        username: llb
+        password: 1234
+              
+#spring.cloud.stream.bindings.input.group=group1
+#spring.cloud.stream.bindings.exchange1.group=exchange-group1     

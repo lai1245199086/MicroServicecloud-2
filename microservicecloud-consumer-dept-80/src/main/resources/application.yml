@@ -1,0 +1,18 @@
+ 
+server:
+  port: 80
+spring:
+  application:
+    name: consumer
+  zipkin:
+    base-url: http://zipkin-server-mysql/
+  sleuth:
+    sampler:
+      probability: 1.0
+ 
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+#RestTemplate访问服务端的时候自带负载均衡 访问集群
